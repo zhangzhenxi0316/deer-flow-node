@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root {
+    height: 100%;
+  }
+
+  body {
+    @apply antialiased;
+  }
+}
+
+/* prose 样式 (markdown 渲染) */
+@layer components {
+  .prose p {
+    @apply mb-2 last:mb-0;
+  }
+
+  .prose pre {
+    @apply bg-gray-800 text-gray-100 rounded-lg p-3 overflow-x-auto text-xs my-2;
+  }
+
+  .prose code:not(pre code) {
+    @apply bg-gray-100 text-gray-800 rounded px-1 py-0.5 text-xs font-mono;
+  }
+
+  .prose ul, .prose ol {
+    @apply pl-4 my-2 space-y-1;
+  }
+
+  .prose ul {
+    @apply list-disc;
+  }
+
+  .prose ol {
+    @apply list-decimal;
+  }
+
+  .prose h1, .prose h2, .prose h3 {
+    @apply font-semibold mt-3 mb-1;
+  }
+
+  .prose h1 { @apply text-lg; }
+  .prose h2 { @apply text-base; }
+  .prose h3 { @apply text-sm; }
+
+  .prose a {
+    @apply text-blue-600 underline;
+  }
+
+  .prose blockquote {
+    @apply border-l-4 border-gray-300 pl-3 text-gray-600 italic;
+  }
+
+  .prose table {
+    @apply text-xs border-collapse w-full my-2;
+  }
+
+  .prose th, .prose td {
+    @apply border border-gray-200 px-2 py-1;
+  }
+
+  .prose th {
+    @apply bg-gray-50 font-medium;
+  }
+}
