@@ -13,7 +13,14 @@
  * - GET  /health        健康检查
  */
 
-import "dotenv/config";
+// 显式指定 .env 路径：monorepo 根目录（src → agent → packages → root）
+// ESM 没有 __dirname，用 import.meta.url 计算文件所在目录
+import { fileURLToPath } from "url";
+import { dirname, resolve } from "path";
+import { config as loadEnv } from "dotenv";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+loadEnv({ path: resolve(__dirname, "../../../.env") });
 import Fastify from "fastify";
 import cors from "@fastify/cors";
 import { streamAgentRun } from "./streaming/bridge.js";
